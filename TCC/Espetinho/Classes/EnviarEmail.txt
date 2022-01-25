@@ -1,0 +1,23 @@
+ //enviar email com a nova senha
+                email = new MailMessage();
+                email.To.Add(new MailAddress(txtEmail.Text));
+                email.From = new MailAddress("enzikoWWE@hotmail.com");
+                email.Subject = "Recuperação de senha";
+                email.IsBodyHtml = true;
+                email.Body = "Caro Sr(a) " + txtNomeUsuario.Text + ", sua nova senha é " + senhanova.ToString();
+                SmtpClient cliente = new SmtpClient("smtp.live.com", 587);
+                try
+                {
+                    using (cliente)
+                    {
+                        cliente.Credentials = new System.Net.NetworkCredential("enzikoWWE@hotmail.com", "Jhi93107000");
+                        cliente.EnableSsl = true;
+                        cliente.Send(email);
+                    }
+                    MessageBox.Show("Sucesso ao enviar a nova senha!", "Verifique seu email!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Usuário ou email não existe!", "Informações incorretas!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }

@@ -1,0 +1,951 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B398D36A-225D-427B-9C70-49FFAA7EB0F8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Espetinho_TCC</RootNamespace>
+    <AssemblyName>Espetinho_TCC</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>iconeLogo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.3.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.3.1\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.6.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.6.1\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="Guna.UI2">
+      <HintPath>..\..\..\..\PROGRAMAS AJUDA\BOTOES E OBJETOS PERSONALIZADOS\Guna.UI2 Activation v2.0.0.9\Build\Guna.UI2.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4, Version=1.1.11.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.1.1.11\lib\net46\K4os.Compression.LZ4.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4.Streams, Version=1.1.11.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.Streams.1.1.11\lib\net46\K4os.Compression.LZ4.Streams.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Hash.xxHash, Version=1.0.6.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Hash.xxHash.1.0.6\lib\net46\K4os.Hash.xxHash.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="MySql.Data, Version=8.0.21.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.21\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySqlBackup, Version=2.3.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySqlBackup.NET.2.3.3.1\lib\net452\MySqlBackup.dll</HintPath>
+    </Reference>
+    <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
+      <HintPath>..\packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.6.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.3\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Ubiety.Dns.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.21\lib\net452\Ubiety.Dns.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="Zstandard.Net, Version=1.1.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.21\lib\net452\Zstandard.Net.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Apresentação\Analise de Vendas\frmSelecionarProdAnaliseVendas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Analise de Vendas\frmSelecionarProdAnaliseVendas.Designer.cs">
+      <DependentUpon>frmSelecionarProdAnaliseVendas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Analise de Vendas\frmVendasGerais.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Analise de Vendas\frmVendasGerais.Designer.cs">
+      <DependentUpon>frmVendasGerais.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Analise de Vendas\frmVendasProdutos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Analise de Vendas\frmVendasProdutos.Designer.cs">
+      <DependentUpon>frmVendasProdutos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Auditoria\frmAuditoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Auditoria\frmAuditoria.Designer.cs">
+      <DependentUpon>frmAuditoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Caixa\frmAlterarItemCarrinho.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Caixa\frmAlterarItemCarrinho.Designer.cs">
+      <DependentUpon>frmAlterarItemCarrinho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Caixa\frmSelecionarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Caixa\frmSelecionarCliente.Designer.cs">
+      <DependentUpon>frmSelecionarCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Caixa\frmSelecionarProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Caixa\frmSelecionarProduto.Designer.cs">
+      <DependentUpon>frmSelecionarProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Caixa\frmValidarCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Caixa\frmValidarCompra.Designer.cs">
+      <DependentUpon>frmValidarCompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Clientes\frmGerenciarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Clientes\frmGerenciarCliente.Designer.cs">
+      <DependentUpon>frmGerenciarCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Controle de Estoque\Entrada de Estoque\frmAddProdutosListaEntrada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Controle de Estoque\Entrada de Estoque\frmAddProdutosListaEntrada.Designer.cs">
+      <DependentUpon>frmAddProdutosListaEntrada.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Controle de Estoque\Entrada de Estoque\frmEntradaEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Controle de Estoque\Entrada de Estoque\frmEntradaEstoque.designer.cs">
+      <DependentUpon>frmEntradaEstoque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Controle de Estoque\Entrada de Estoque\frmGerenciarEntradaEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Controle de Estoque\Entrada de Estoque\frmGerenciarEntradaEstoque.Designer.cs">
+      <DependentUpon>frmGerenciarEntradaEstoque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Controle de Estoque\Entrada de Estoque\frmObsEntradaEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Controle de Estoque\Entrada de Estoque\frmObsEntradaEstoque.Designer.cs">
+      <DependentUpon>frmObsEntradaEstoque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Controle de Estoque\Entrada de Estoque\frmQtdProdutoEntrada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Controle de Estoque\Entrada de Estoque\frmQtdProdutoEntrada.Designer.cs">
+      <DependentUpon>frmQtdProdutoEntrada.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Controle de Estoque\Entrada de Estoque\frmVerProdutosEntradaEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Controle de Estoque\Entrada de Estoque\frmVerProdutosEntradaEstoque.Designer.cs">
+      <DependentUpon>frmVerProdutosEntradaEstoque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Controle de Estoque\Saida de Estoque\frmAddProdutosListaSaida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Controle de Estoque\Saida de Estoque\frmAddProdutosListaSaida.Designer.cs">
+      <DependentUpon>frmAddProdutosListaSaida.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Controle de Estoque\Saida de Estoque\frmGerenciarSaidaEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Controle de Estoque\Saida de Estoque\frmGerenciarSaidaEstoque.Designer.cs">
+      <DependentUpon>frmGerenciarSaidaEstoque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Controle de Estoque\Saida de Estoque\frmQtdProdutoSaida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Controle de Estoque\Saida de Estoque\frmQtdProdutoSaida.Designer.cs">
+      <DependentUpon>frmQtdProdutoSaida.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Finanças\frmFinancas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Finanças\frmFinancas.Designer.cs">
+      <DependentUpon>frmFinancas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Finanças\frmGerenciarEntradas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Finanças\frmGerenciarEntradas.Designer.cs">
+      <DependentUpon>frmGerenciarEntradas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Finanças\frmGerenciarSaidas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Finanças\frmGerenciarSaidas.Designer.cs">
+      <DependentUpon>frmGerenciarSaidas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Finanças\frmObsFinanca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Finanças\frmObsFinanca.Designer.cs">
+      <DependentUpon>frmObsFinanca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Fornecedor\frmControleDeFornecedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Fornecedor\frmControleDeFornecedor.designer.cs">
+      <DependentUpon>frmControleDeFornecedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Fornecedor\frmGerenciarFornecedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Fornecedor\frmGerenciarFornecedor.designer.cs">
+      <DependentUpon>frmGerenciarFornecedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Fornecedor\Pedidos Fornecedor\frmAddProdPedForn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Fornecedor\Pedidos Fornecedor\frmAddProdPedForn.designer.cs">
+      <DependentUpon>frmAddProdPedForn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Fornecedor\Pedidos Fornecedor\frmGerenciarPedidosForn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Fornecedor\Pedidos Fornecedor\frmGerenciarPedidosForn.designer.cs">
+      <DependentUpon>frmGerenciarPedidosForn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Fornecedor\Pedidos Fornecedor\frmItPedidosForn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Fornecedor\Pedidos Fornecedor\frmItPedidosForn.designer.cs">
+      <DependentUpon>frmItPedidosForn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Fornecedor\Pedidos Fornecedor\frmPedidosForn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Fornecedor\Pedidos Fornecedor\frmPedidosForn.designer.cs">
+      <DependentUpon>frmPedidosForn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Fornecedor\Pedidos Fornecedor\frmPesqFPedidosForn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Fornecedor\Pedidos Fornecedor\frmPesqFPedidosForn.designer.cs">
+      <DependentUpon>frmPesqFPedidosForn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Fornecedor\Pedidos Fornecedor\frmQtdPedForn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Fornecedor\Pedidos Fornecedor\frmQtdPedForn.designer.cs">
+      <DependentUpon>frmQtdPedForn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Funcionario\frmCadastrarCargo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Funcionario\frmCadastrarCargo.Designer.cs">
+      <DependentUpon>frmCadastrarCargo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Funcionario\frmGerenciarFuncionario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Funcionario\frmGerenciarFuncionario.Designer.cs">
+      <DependentUpon>frmGerenciarFuncionario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Funcionario\frmSelecionarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Funcionario\frmSelecionarUsuario.Designer.cs">
+      <DependentUpon>frmSelecionarUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Principal\Gerenciar Pedidos\frmBuscarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Principal\Gerenciar Pedidos\frmBuscarCliente.designer.cs">
+      <DependentUpon>frmBuscarCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Principal\Gerenciar Pedidos\frmBuscarFunc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Principal\Gerenciar Pedidos\frmBuscarFunc.designer.cs">
+      <DependentUpon>frmBuscarFunc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Principal\Gerenciar Pedidos\frmBuscarPagto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Principal\Gerenciar Pedidos\frmBuscarPagto.designer.cs">
+      <DependentUpon>frmBuscarPagto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Principal\Gerenciar Pedidos\frmGerenciarPedidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Principal\Gerenciar Pedidos\frmGerenciarPedidos.designer.cs">
+      <DependentUpon>frmGerenciarPedidos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Produtos\frmCadastrarTipoProd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Produtos\frmCadastrarTipoProd.Designer.cs">
+      <DependentUpon>frmCadastrarTipoProd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Controle de Estoque\Saida de Estoque\frmObsSaidaEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Controle de Estoque\Saida de Estoque\frmObsSaidaEstoque.Designer.cs">
+      <DependentUpon>frmObsSaidaEstoque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Controle de Estoque\Saida de Estoque\frmSaidaEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Controle de Estoque\Saida de Estoque\frmSaidaEstoque.Designer.cs">
+      <DependentUpon>frmSaidaEstoque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Controle de Estoque\Saida de Estoque\frmVerProdutosSaidaEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Controle de Estoque\Saida de Estoque\frmVerProdutosSaidaEstoque.Designer.cs">
+      <DependentUpon>frmVerProdutosSaidaEstoque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Fornecedor\frmSelecionarForn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Fornecedor\frmSelecionarForn.Designer.cs">
+      <DependentUpon>frmSelecionarForn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Analise de Vendas\frmAnaliseVendas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Analise de Vendas\frmAnaliseVendas.Designer.cs">
+      <DependentUpon>frmAnaliseVendas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Principal\frmVerProdutosComanda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Principal\frmVerProdutosComanda.Designer.cs">
+      <DependentUpon>frmVerProdutosComanda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Gerenciamento de Senha\frmAlterarSenha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Gerenciamento de Senha\frmAlterarSenha.Designer.cs">
+      <DependentUpon>frmAlterarSenha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Caixa\frmCaixa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Caixa\frmCaixa.Designer.cs">
+      <DependentUpon>frmCaixa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Controle de Estoque\frmControleEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Controle de Estoque\frmControleEstoque.Designer.cs">
+      <DependentUpon>frmControleEstoque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Principal\frmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Principal\frmPrincipal.Designer.cs">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Gerenciamento de Senha\frmRecSenha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Gerenciamento de Senha\frmRecSenha.Designer.cs">
+      <DependentUpon>frmRecSenha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Produtos\frmGerenciarProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Produtos\frmGerenciarProduto.Designer.cs">
+      <DependentUpon>frmGerenciarProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Usuarios\frmCadastrarTipoUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Usuarios\frmCadastrarTipoUsuario.Designer.cs">
+      <DependentUpon>frmCadastrarTipoUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Apresentação\Usuarios\frmGerenciarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\Usuarios\frmGerenciarUsuario.Designer.cs">
+      <DependentUpon>frmGerenciarUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\WebServiceCorreios\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="DAO\AuditoriaDAO.cs" />
+    <Compile Include="DAO\CargoDAO.cs" />
+    <Compile Include="DAO\ClientesDAO.cs" />
+    <Compile Include="DAO\ComandaDAO.cs" />
+    <Compile Include="DAO\EntradaEstoqueDAO.cs" />
+    <Compile Include="DAO\FinancasDAO.cs" />
+    <Compile Include="DAO\FornecedorDAO.cs" />
+    <Compile Include="DAO\FuncionarioDAO.cs" />
+    <Compile Include="DAO\ItensComandaDAO.cs" />
+    <Compile Include="DAO\ItensEntradaEstoqueDAO.cs" />
+    <Compile Include="DAO\ItensPedidoFornDAO.cs" />
+    <Compile Include="DAO\ItensSaidaEstoqueDAO.cs" />
+    <Compile Include="DAO\PagamentoDAO.cs" />
+    <Compile Include="DAO\PedidosFornDAO.cs" />
+    <Compile Include="DAO\ProdutoDAO.cs" />
+    <Compile Include="DAO\SaidaEstoqueDAO.cs" />
+    <Compile Include="DAO\TipoProdutoDAO.cs" />
+    <Compile Include="DAO\TipoUsuarioDAO.cs" />
+    <Compile Include="espetinhoDataSet.cs">
+      <DependentUpon>espetinhoDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="espetinhoDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>espetinhoDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Auditoria.cs" />
+    <Compile Include="Model\Cargo.cs" />
+    <Compile Include="Model\Clientes.cs" />
+    <Compile Include="Model\Comanda.cs" />
+    <Compile Include="Model\EntradaEstoque.cs" />
+    <Compile Include="Model\Financas.cs" />
+    <Compile Include="Model\Fornecedor.cs" />
+    <Compile Include="DAO\UsuarioDAO.cs" />
+    <Compile Include="Model\Funcionario.cs" />
+    <Compile Include="Model\ItensComanda.cs" />
+    <Compile Include="Model\ItensEntradaEstoque.cs" />
+    <Compile Include="Model\ItensPedidoForn.cs" />
+    <Compile Include="Model\ItensSaidaEstoque.cs" />
+    <Compile Include="Model\Pagamento.cs" />
+    <Compile Include="Model\PedidosForn.cs" />
+    <Compile Include="Model\Produto.cs" />
+    <Compile Include="Model\SaidaEstoque.cs" />
+    <Compile Include="Model\TipoProduto.cs" />
+    <Compile Include="Model\TipoUsuario.cs" />
+    <Compile Include="Model\Usuario.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="Utils\BackupBD.cs" />
+    <Compile Include="Utils\Conexao.cs" />
+    <Compile Include="Apresentação\frmBemVindo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Apresentação\frmBemVindo.Designer.cs">
+      <DependentUpon>frmBemVindo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\Correios.cs" />
+    <Compile Include="Utils\Criptografia.cs" />
+    <Compile Include="Utils\Dados.cs" />
+    <Compile Include="Utils\Resolucao.cs" />
+    <EmbeddedResource Include="Apresentação\Analise de Vendas\frmSelecionarProdAnaliseVendas.resx">
+      <DependentUpon>frmSelecionarProdAnaliseVendas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Analise de Vendas\frmVendasGerais.resx">
+      <DependentUpon>frmVendasGerais.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Analise de Vendas\frmVendasProdutos.resx">
+      <DependentUpon>frmVendasProdutos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Auditoria\frmAuditoria.resx">
+      <DependentUpon>frmAuditoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Caixa\frmAlterarItemCarrinho.resx">
+      <DependentUpon>frmAlterarItemCarrinho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Caixa\frmSelecionarCliente.resx">
+      <DependentUpon>frmSelecionarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Caixa\frmSelecionarProduto.resx">
+      <DependentUpon>frmSelecionarProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Caixa\frmValidarCompra.resx">
+      <DependentUpon>frmValidarCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Clientes\frmGerenciarCliente.resx">
+      <DependentUpon>frmGerenciarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Controle de Estoque\Entrada de Estoque\frmAddProdutosListaEntrada.resx">
+      <DependentUpon>frmAddProdutosListaEntrada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Controle de Estoque\Entrada de Estoque\frmEntradaEstoque.resx">
+      <DependentUpon>frmEntradaEstoque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Controle de Estoque\Entrada de Estoque\frmGerenciarEntradaEstoque.resx">
+      <DependentUpon>frmGerenciarEntradaEstoque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Controle de Estoque\Entrada de Estoque\frmObsEntradaEstoque.resx">
+      <DependentUpon>frmObsEntradaEstoque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Controle de Estoque\Entrada de Estoque\frmQtdProdutoEntrada.resx">
+      <DependentUpon>frmQtdProdutoEntrada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Controle de Estoque\Entrada de Estoque\frmVerProdutosEntradaEstoque.resx">
+      <DependentUpon>frmVerProdutosEntradaEstoque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Controle de Estoque\Saida de Estoque\frmAddProdutosListaSaida.resx">
+      <DependentUpon>frmAddProdutosListaSaida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Controle de Estoque\Saida de Estoque\frmGerenciarSaidaEstoque.resx">
+      <DependentUpon>frmGerenciarSaidaEstoque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Controle de Estoque\Saida de Estoque\frmObsSaidaEstoque.resx">
+      <DependentUpon>frmObsSaidaEstoque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Controle de Estoque\Saida de Estoque\frmQtdProdutoSaida.resx">
+      <DependentUpon>frmQtdProdutoSaida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Finanças\frmFinancas.resx">
+      <DependentUpon>frmFinancas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Finanças\frmGerenciarEntradas.resx">
+      <DependentUpon>frmGerenciarEntradas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Finanças\frmGerenciarSaidas.resx">
+      <DependentUpon>frmGerenciarSaidas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Finanças\frmObsFinanca.resx">
+      <DependentUpon>frmObsFinanca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Fornecedor\frmControleDeFornecedor.resx">
+      <DependentUpon>frmControleDeFornecedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Fornecedor\frmGerenciarFornecedor.resx">
+      <DependentUpon>frmGerenciarFornecedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Fornecedor\Pedidos Fornecedor\frmAddProdPedForn.resx">
+      <DependentUpon>frmAddProdPedForn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Fornecedor\Pedidos Fornecedor\frmGerenciarPedidosForn.resx">
+      <DependentUpon>frmGerenciarPedidosForn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Fornecedor\Pedidos Fornecedor\frmItPedidosForn.resx">
+      <DependentUpon>frmItPedidosForn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Fornecedor\Pedidos Fornecedor\frmPedidosForn.resx">
+      <DependentUpon>frmPedidosForn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Fornecedor\Pedidos Fornecedor\frmPesqFPedidosForn.resx">
+      <DependentUpon>frmPesqFPedidosForn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Fornecedor\Pedidos Fornecedor\frmQtdPedForn.resx">
+      <DependentUpon>frmQtdPedForn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Funcionario\frmCadastrarCargo.resx">
+      <DependentUpon>frmCadastrarCargo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Funcionario\frmGerenciarFuncionario.resx">
+      <DependentUpon>frmGerenciarFuncionario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Funcionario\frmSelecionarUsuario.resx">
+      <DependentUpon>frmSelecionarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Principal\Gerenciar Pedidos\frmBuscarCliente.resx">
+      <DependentUpon>frmBuscarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Principal\Gerenciar Pedidos\frmBuscarFunc.resx">
+      <DependentUpon>frmBuscarFunc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Principal\Gerenciar Pedidos\frmBuscarPagto.resx">
+      <DependentUpon>frmBuscarPagto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Principal\Gerenciar Pedidos\frmGerenciarPedidos.resx">
+      <DependentUpon>frmGerenciarPedidos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Produtos\frmCadastrarTipoProd.resx">
+      <DependentUpon>frmCadastrarTipoProd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Controle de Estoque\Saida de Estoque\frmSaidaEstoque.resx">
+      <DependentUpon>frmSaidaEstoque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Controle de Estoque\Saida de Estoque\frmVerProdutosSaidaEstoque.resx">
+      <DependentUpon>frmVerProdutosSaidaEstoque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Fornecedor\frmSelecionarForn.resx">
+      <DependentUpon>frmSelecionarForn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Principal\frmVerProdutosComanda.resx">
+      <DependentUpon>frmVerProdutosComanda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Gerenciamento de Senha\frmAlterarSenha.resx">
+      <DependentUpon>frmAlterarSenha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Analise de Vendas\frmAnaliseVendas.resx">
+      <DependentUpon>frmAnaliseVendas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\frmBemVindo.resx">
+      <DependentUpon>frmBemVindo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Caixa\frmCaixa.resx">
+      <DependentUpon>frmCaixa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Controle de Estoque\frmControleEstoque.resx">
+      <DependentUpon>frmControleEstoque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Principal\frmPrincipal.resx">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Gerenciamento de Senha\frmRecSenha.resx">
+      <DependentUpon>frmRecSenha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Produtos\frmGerenciarProduto.resx">
+      <DependentUpon>frmGerenciarProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Usuarios\frmCadastrarTipoUsuario.resx">
+      <DependentUpon>frmCadastrarTipoUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Apresentação\Usuarios\frmGerenciarUsuario.resx">
+      <DependentUpon>frmGerenciarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Connected Services\WebServiceCorreios\AtendeClienteService.wsdl" />
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.atualizaPagamentoNaEntregaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.atualizaRemessaAgrupadaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.bloquearObjetoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.buscaClienteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.buscaContratoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.buscaDataAtualResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.buscaOpcoesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.buscaPagamentoEntregaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.buscaServicosAdicionaisAtivosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.buscaServicosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.buscaServicosValorDeclaradoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.buscaServicosXServicosAdicionaisResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.buscaTarifaValeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.calculaTarifaServicoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.cancelarObjetoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.cancelarPedidoScolResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.clienteERP.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.consultaCEPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.contratoERP.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.dimensaoTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.embalagemLRSMaster.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.enderecoERP.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.fechaPlpResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.fechaPlpVariosServicosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.geraDigitoVerificadorEtiquetasResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.getStatusCartaoPostagemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.getStatusPLPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.integrarUsuarioScolResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.mensagemParametrizadaTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.obterClienteAtualizacaoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.obterEmbalagemLRSResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.obterMensagemParametrizadaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.pesquisarDimensoesServicoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.pesquisarEmbalagensPorServicoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.pesquisarParametrosPorDescricaoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.pesquisarServicosAdicionaisResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.retornoCancelamento.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.servicoAdicionalTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.servicoAdicionalXML.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.servicoERP.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.solicitaEtiquetasResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.solicitaPLPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.solicitarPostagemScolResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.solicitaXmlPlpResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.statusCartao.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.statusPlp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.tipoEmbalagem.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.valePostal.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.validaEtiquetaPLPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.validaPlpResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.validarPostagemReversaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.validarPostagemSimultaneaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.verificaDisponibilidadeServicoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.verificaModalTransporteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WebServiceCorreios\Espetinho_TCC.WebServiceCorreios.VerificaSeTodosObjetosCanceladosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="espetinhoDataSet.xsc">
+      <DependentUpon>espetinhoDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="espetinhoDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>espetinhoDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="espetinhoDataSet.xss">
+      <DependentUpon>espetinhoDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ImagemFundo2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ImagemFundo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ImagemFundo21.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\WebServiceCorreios\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\WebServiceCorreios\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\WebServiceCorreios\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\WebServiceCorreios\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Icones\bom.png" />
+    <None Include="bin\Debug\Icones\ruim.png" />
+    <Content Include="iconeLogo.ico" />
+    <None Include="Resources\ENZAO.jpg" />
+    <None Include="Resources\PEDROL.jpg" />
+    <None Include="Resources\ZURUTHZADA.jpg" />
+    <None Include="Resources\dalprat.png" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 e x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
